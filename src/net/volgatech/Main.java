@@ -24,7 +24,7 @@ public class Main {
             Integer units = random.nextInt(100) + 50;
             Integer price = random.nextInt(20) + 10;
             System.out.println("[" + LocalDateTime.now() + "] product " + element + ". Units:" + units + "; Price:" + price);
-            supermarket.AddProduct(element, units, price);
+            supermarket.addProduct(element, units, price);
         }
         System.out.println("[" + LocalDateTime.now() + "] Supermarket is opened");
         Timer timer = new Timer();

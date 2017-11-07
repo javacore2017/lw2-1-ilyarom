@@ -12,7 +12,7 @@ public class Supermarket {
     public Supermarket() {
 
     }
-    public void AddProduct(String type, Integer count, Integer price) {
+    public void addProduct(String type, Integer count, Integer price) {
         Product product = new Product(type, count, price);
         _products.add(product);
     }
