@@ -1,5 +1,8 @@
 package net.volgatech;
 
+import net.volgatech.Customer.Customer;
+import net.volgatech.Report.Report;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +17,11 @@ public class Supermarket {
     }
     public void addProduct(String type, Integer count, Integer price) {
         Product product = new Product(type, count, price);
+        _products.add(product);
+    }
+
+    public void addProduct(String type, Integer count, Integer price, boolean isAlcoholic) {
+        Product product = new Product(type, count, price, isAlcoholic);
         _products.add(product);
     }
     public void addCustomer(String type, String paymentMethod) {

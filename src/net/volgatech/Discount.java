@@ -4,7 +4,7 @@ public class Discount {
     private Double _value;
     public enum DiscountType {
         FOR_CARD_PAYMENT, FOR_CASH_PAYMENT, FOR_RETIRED, ALL;
-        String ToString() {
+        public String ToString() {
             switch (this) {
                 case FOR_CARD_PAYMENT:
                     return "for card payment";
