@@ -38,24 +38,6 @@ public class Main {
         System.out.println("[" + LocalDateTime.now() + "] Supermarket is opened");
         Timer timer = new Timer();
 
-        /*for (Integer i = 0; i < random.nextInt(5) + 2; ++i) {
-            timer.schedule(new TimerTask() {
-                public void run() {
-                    supermarket.AddCustomer(values.customerTypes.get(random.nextInt(2)), values.paymentMethods.get(random.nextInt(1)));
-                    Timer timer2 = new Timer();
-                    for (Integer j = 0; j < random.nextInt(5); ++j) {
-                        timer2.schedule(new TimerTask() {
-                            @Override
-                            public void run() {
-                                Customer customer = supermarket.getCustomer(i);
-                                List<Product> products = Supermarket.getProductList();
-                                customer.PushToBasket(products.get(random.nextInt(products.size() - 1)));
-                            }
-                        }, random.nextInt(4) * 1000);
-                    }
-                }
-            }, random.nextInt(8) * 1000);
-        }*/
         supermarket.addCustomer(values.customerTypes.get(random.nextInt(2)), values.paymentMethods.get(random.nextInt(1)));
         for (int i = 0; i < 5; ++i)
         {
