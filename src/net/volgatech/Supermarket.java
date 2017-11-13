@@ -1,6 +1,7 @@
 package net.volgatech;
 
 import net.volgatech.Customer.Customer;
+import net.volgatech.Customer.CustomerType;
 import net.volgatech.Report.Report;
 
 import java.math.BigDecimal;
@@ -60,7 +61,7 @@ public class Supermarket {
         System.out.println("[" + LocalDateTime.now() + "] New customer ‘customer" + this.customers.indexOf(customer) + "’ arrived");
     }
 
-    public void addCustomer(Customer.Type type, String paymentMethod) {
+    public void addCustomer(CustomerType type, String paymentMethod) {
         Customer customer = new Customer(type, paymentMethod);
         this.customers.add(customer);
         System.out.println("[" + LocalDateTime.now() + "] New customer ‘customer" + this.customers.indexOf(customer) + "’ arrived");

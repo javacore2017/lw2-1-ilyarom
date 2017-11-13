@@ -1,7 +1,8 @@
 package net.volgatech.Handler;
 
 import net.volgatech.Customer.Customer;
-import net.volgatech.Discount;
+import net.volgatech.Discount.Discount;
+import net.volgatech.Discount.DiscountType;
 import net.volgatech.Product;
 import net.volgatech.Supermarket;
 
@@ -43,9 +44,9 @@ public class Main {
         {
             double discountValue = ((random.nextInt(75) + 5) * 0.01);
             String productValue = supermarket.getProduct(random.nextInt(supermarket.getProductsCount())).getType();
-            Discount.DiscountType discountType = values.discountTypeList.get(random.nextInt(4));
+            DiscountType discountType = values.discountTypeList.get(random.nextInt(4));
             supermarket.getCashDesk().addDiscount(discountValue, productValue, discountType);
-            System.out.println("[" + LocalDateTime.now() + "] Discount in the supermarket! " + discountValue * 100 + "% on " + productValue + " " + discountType.ToString());
+            System.out.println("[" + LocalDateTime.now() + "] Discount in the supermarket! " + discountValue * 100 + "% on " + productValue + " " + discountType.toString());
         }
         for (Integer i = 0; true; ++i) {
             if (isCustomersBuyUp(supermarket))

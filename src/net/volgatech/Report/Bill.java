@@ -1,7 +1,7 @@
 package net.volgatech.Report;
 
-import net.volgatech.Customer.PaymentMethod;
-import net.volgatech.Discount;
+import net.volgatech.Customer.PaymentMethod.MethodType;
+import net.volgatech.Discount.Discount;
 import net.volgatech.Product;
 
 import java.math.BigDecimal;
@@ -10,10 +10,10 @@ import java.util.List;
 
 public class Bill {
     private BigDecimal amount = new BigDecimal(0);
-    private PaymentMethod.Method paymentMethod;
+    private MethodType paymentMethod;
     private List<Product> productsInfo = new ArrayList<Product>();
     private Discount discount;
-    public Bill(BigDecimal amount, PaymentMethod.Method paymentMethod, List<Product> productList) {
+    public Bill(BigDecimal amount, MethodType paymentMethod, List<Product> productList) {
         setPaymentMethod(paymentMethod);
         setAmount(amount);
         setProductList(productList);
@@ -24,7 +24,7 @@ public class Bill {
     public BigDecimal getAmount() {
         return this.amount;
     }
-    public void setPaymentMethod(PaymentMethod.Method paymentMethod) {
+    public void setPaymentMethod(MethodType paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
     public void setProductList(List<Product> productsInfo) {

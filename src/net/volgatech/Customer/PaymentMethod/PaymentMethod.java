@@ -1,29 +1,20 @@
-package net.volgatech.Customer;
+package net.volgatech.Customer.PaymentMethod;
 
 public class PaymentMethod {
-    public enum Method {
-        CARD,
-        CASH;
-
-        @Override
-        public String toString() {
-            return super.toString().toLowerCase();
-        }
-    }
-    private Method method;
-    PaymentMethod(String method) {
+    private MethodType method;
+    public PaymentMethod(String method) {
         setMethod(method);
     }
-    public Method getMethod() {
+    public MethodType getMethod() {
         return this.method;
     }
     public void setMethod(String method) {
         switch (method.toLowerCase()) {
             case "card":
-                this.method = Method.CARD;
+                this.method = MethodType.CARD;
                 break;
             case "cash":
-                this.method = Method.CASH;
+                this.method = MethodType.CASH;
                 break;
             default:
                 throw new IllegalArgumentException("Invalid type of payment method value");

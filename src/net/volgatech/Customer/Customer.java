@@ -1,26 +1,19 @@
 package net.volgatech.Customer;
 
+import net.volgatech.Customer.PaymentMethod.MethodType;
+import net.volgatech.Customer.PaymentMethod.PaymentMethod;
 import net.volgatech.Product;
 
 public class Customer {
     private Basket basket = new Basket();
     private PaymentMethod paymentMethod;
-    public enum Type {
-        CHILD,
-        ADULT,
-        RETIRED;
-        @Override
-        public String toString() {
-            return super.toString().toLowerCase();
-        }
-    }
-    private Type type;
+    private CustomerType type;
     public Customer(String type, String method) {
         setType(type);
         setPaymentMethod(method);
     }
 
-    public Customer(Type type, String method) {
+    public Customer(CustomerType type, String method) {
         setType(type);
         setPaymentMethod(method);
     }
@@ -28,28 +21,28 @@ public class Customer {
         return this.basket;
     }
 
-    public Type getType() {
+    public CustomerType getType() {
         return this.type;
     }
 
-    public PaymentMethod.Method getPaymentMethod() {
+    public MethodType getPaymentMethod() {
         return this.paymentMethod.getMethod();
     }
 
-    public void setType(Type type) {
+    public void setType(CustomerType type) {
         this.type = type;
     }
 
     public void setType(String type) {
         switch (type.toLowerCase()) {
             case "child":
-                this.type = Type.CHILD;
+                this.type = CustomerType.CHILD;
                 break;
             case "adult":
-                this.type = Type.ADULT;
+                this.type = CustomerType.ADULT;
                 break;
             case "retired":
-                this.type = Type.RETIRED;
+                this.type = CustomerType.RETIRED;
                 break;
             default:
                 throw new IllegalArgumentException("Invalid type of customer value");

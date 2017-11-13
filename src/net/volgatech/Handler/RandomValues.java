@@ -1,6 +1,7 @@
 package net.volgatech.Handler;
 
-import net.volgatech.Discount;
+import net.volgatech.Discount.Discount;
+import net.volgatech.Discount.DiscountType;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,5 +16,5 @@ public class RandomValues {
             "sausage", "beer", "whiskey", "vodka", "vine");
     public static List<String> customerTypes = Arrays.asList("child", "adult", "retired");
     public static List<String> paymentMethods = Arrays.asList("card", "cash");
-    public static List<Discount.DiscountType> discountTypeList = Arrays.asList(Discount.DiscountType.ALL, Discount.DiscountType.FOR_CARD_PAYMENT, Discount.DiscountType.FOR_CASH_PAYMENT, Discount.DiscountType.FOR_RETIRED);
+    public static List<DiscountType> discountTypeList = Arrays.asList(DiscountType.ALL, DiscountType.FOR_CARD_PAYMENT, DiscountType.FOR_CASH_PAYMENT, DiscountType.FOR_RETIRED);
 }

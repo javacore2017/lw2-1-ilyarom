@@ -1,8 +1,10 @@
 package net.volgatech;
 
 import net.volgatech.Customer.Customer;
-import net.volgatech.Customer.PaymentMethod;
-import net.volgatech.Report.Report;
+import net.volgatech.Customer.CustomerType;
+import net.volgatech.Customer.PaymentMethod.MethodType;
+import net.volgatech.Discount.Discount;
+import net.volgatech.Discount.DiscountType;
 import net.volgatech.Report.Bill;
 
 import java.math.BigDecimal;
@@ -20,15 +22,15 @@ public class CashDesk {
             if (element.getProductType().equals(product.getType())) {
                 switch (element.getDiscountType()) {
                     case FOR_CARD_PAYMENT:
-                        if (customer.getPaymentMethod() == PaymentMethod.Method.CARD)
+                        if (customer.getPaymentMethod() == MethodType.CARD)
                             coefficient *= (1 - element.getValue());
                         break;
                     case FOR_CASH_PAYMENT:
-                        if (customer.getPaymentMethod() == PaymentMethod.Method.CASH)
+                        if (customer.getPaymentMethod() == MethodType.CASH)
                             coefficient *= (1 - element.getValue());
                         break;
                     case FOR_RETIRED:
-                        if (customer.getType() == Customer.Type.RETIRED)
+                        if (customer.getType() == CustomerType.RETIRED)
                             coefficient *= (1 - element.getValue());
                         break;
                     case ALL:
@@ -46,7 +48,7 @@ public class CashDesk {
         this.cashMachineAmount = new BigDecimal(0);
         if (!customer.getBasket().getProducts().isEmpty()) {
             for (Product product : customer.getBasket().getProducts()) {
-                if (product.isAlcoholic() && customer.getType() == Customer.Type.CHILD) {
+                if (product.isAlcoholic() && customer.getType() == CustomerType.CHILD) {
                     System.out.println("[" + LocalDateTime.now() + "] Try to buy alcholic product by child!");
                     break;
                 }
@@ -68,7 +70,7 @@ public class CashDesk {
     public Integer getAmount() {
         return this.cashMachineAmount.intValue() ;
     }
-    public void addDiscount(Double value, String productType, Discount.DiscountType discountType) {
+    public void addDiscount(Double value, String productType, DiscountType discountType) {
         Discount discount = new Discount(value, productType, discountType);
         this.discounts.add(discount);
     }
