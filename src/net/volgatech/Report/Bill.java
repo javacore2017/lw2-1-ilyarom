@@ -9,29 +9,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bill {
-    private BigDecimal _amount = new BigDecimal(0);
-    private PaymentMethod.Method _paymentMethod;
-    private List<Product> _productsInfo = new ArrayList<Product>();
-    private Discount _discount;
+    private BigDecimal amount = new BigDecimal(0);
+    private PaymentMethod.Method paymentMethod;
+    private List<Product> productsInfo = new ArrayList<Product>();
+    private Discount discount;
     public Bill(BigDecimal amount, PaymentMethod.Method paymentMethod, List<Product> productList) {
         setPaymentMethod(paymentMethod);
         setAmount(amount);
         setProductList(productList);
     }
     public List<Product> getProductList() {
-        return _productsInfo;
+        return this.productsInfo;
     }
     public BigDecimal getAmount() {
-        return _amount;
+        return this.amount;
     }
     public void setPaymentMethod(PaymentMethod.Method paymentMethod) {
-        _paymentMethod = paymentMethod;
+        this.paymentMethod = paymentMethod;
     }
     public void setProductList(List<Product> productsInfo) {
-        _productsInfo = productsInfo;
+        this.productsInfo = productsInfo;
     }
     public void setAmount(BigDecimal amount) {
-        _amount = amount;
+        this.amount = amount;
     }
 
 }

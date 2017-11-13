@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Basket {
-    private List<Product> _products = new ArrayList<Product>();
+    private List<Product> products = new ArrayList<Product>();
     public List<Product> getProducts() {
-        return _products;
+        return this.products;
     }
     public void Add(Product product) {
-        _products.add(product);
+        this.products.add(product);
     }
 }

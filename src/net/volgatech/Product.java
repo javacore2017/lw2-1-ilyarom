@@ -3,10 +3,10 @@ package net.volgatech;
 import java.math.BigDecimal;
 
 public class Product implements Cloneable {
-    private String _type;
-    private Integer _count;
-    private BigDecimal _price = new BigDecimal(0);
-    private Boolean _isAlcoholic = false;
+    private String type;
+    private Integer count;
+    private BigDecimal price = new BigDecimal(0);
+    private Boolean isAlcoholic = false;
     Product(String type, Integer count, Integer price) {
         setType(type);
         setCount(count);
@@ -21,42 +21,41 @@ public class Product implements Cloneable {
         setType(type);
         setCount(count);
         setPrice(price);
-        _isAlcoholic = isAlcoholic;
+        this.isAlcoholic = isAlcoholic;
     }
     Product(String type, Integer count, BigDecimal price, Boolean isAlcoholic) {
         setType(type);
         setCount(count);
         setPrice(price);
-        _isAlcoholic = isAlcoholic;
+        this.isAlcoholic = isAlcoholic;
     }
     public Integer getCount() {
-        return _count;
+        return this.count;
     }
     public BigDecimal getPrice() {
-        return _price;
+        return this.price;
     }
     public String getType() {
-        return _type;
+        return this.type;
     }
     public void setType(String type) {
         if (type.isEmpty()) throw new IllegalArgumentException("Invalid type value");
-        _type = type;
+        this.type = type;
     }
     public void setCount(Integer count) {
         if (count < 0) throw new IllegalArgumentException("Invalid count value");
-        _count = count;
+        this.count = count;
     }
     public void setPrice(Integer price) {
         if (price <= 0) throw new IllegalArgumentException("Invalid price value");
-        _price = new BigDecimal(price);
+        this.price = new BigDecimal(price);
     }
-    public void setPrice(BigDecimal price) {
-        _price = price;
+    public void setPrice(BigDecimal price) { this.price = price;
     }
     public Product clone() throws CloneNotSupportedException{
         return (Product) super.clone();
     }
     public Boolean isAlcoholic() {
-        return _isAlcoholic;
+        return this.isAlcoholic;
     }
 }

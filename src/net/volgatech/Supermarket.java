@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Supermarket {
-    private List<Customer> _customers = new ArrayList<Customer>();
-    private List<Product> _products = new ArrayList<Product>();
-    private CashDesk _cashDesk = new CashDesk();
-    private Report _report = new Report();
+    private List<Customer> customers = new ArrayList<Customer>();
+    private List<Product> products = new ArrayList<Product>();
+    private CashDesk cashDesk = new CashDesk();
+    private Report report = new Report();
     private BigDecimal getPriceOfProduct(String type) {
-        for(Product element : _products) {
+        for(Product element : this.products) {
             if (element.getType().equals(type))
                 return element.getPrice();
         }
@@ -22,58 +22,58 @@ public class Supermarket {
     }
 
     public Customer getCustomer(Integer index) {
-        return _customers.get(index);
+        return this.customers.get(index);
     }
 
     public Integer getCustomersCount() {
-        return _customers.size();
+        return this.customers.size();
     }
 
     public Integer getProductsCount() {
-        return _products.size();
+        return this.products.size();
     }
 
     public Product getProduct(Integer index) {
-        return _products.get(index);
+        return this.products.get(index);
     }
 
     public CashDesk getCashDesk() {
-        return _cashDesk;
+        return this.cashDesk;
     }
 
     public Report getReport() {
-        return _report;
+        return this.report;
     }
 
     public void addProduct(String type, Integer count, Integer price) {
         Product product = new Product(type, count, price);
-        _products.add(product);
+        this.products.add(product);
     }
 
     public void addProduct(String type, Integer count, Integer price, boolean isAlcoholic) {
         Product product = new Product(type, count, price, isAlcoholic);
-        _products.add(product);
+        this.products.add(product);
     }
     public void addCustomer(String type, String paymentMethod) {
         Customer customer = new Customer(type, paymentMethod);
-        _customers.add(customer);
-        System.out.println("[" + LocalDateTime.now() + "] New customer ‘customer" + _customers.indexOf(customer) + "’ arrived");
+        this.customers.add(customer);
+        System.out.println("[" + LocalDateTime.now() + "] New customer ‘customer" + this.customers.indexOf(customer) + "’ arrived");
     }
 
     public void addCustomer(Customer.Type type, String paymentMethod) {
         Customer customer = new Customer(type, paymentMethod);
-        _customers.add(customer);
-        System.out.println("[" + LocalDateTime.now() + "] New customer ‘customer" + _customers.indexOf(customer) + "’ arrived");
+        this.customers.add(customer);
+        System.out.println("[" + LocalDateTime.now() + "] New customer ‘customer" + this.customers.indexOf(customer) + "’ arrived");
     }
 
     public void changeProductCount(int value, int index) {
-        Product product = _products.get(index);
+        Product product = this.products.get(index);
         product.setCount(value);
-        _products.set(index, product);
+        this.products.set(index, product);
     }
 
     private Boolean isExistProduct(Product product) {
-        for(Product element : _products) {
+        for(Product element : this.products) {
             if (element.getType().equals(product.getType()))
                 return true;
         }
@@ -88,7 +88,7 @@ public class Supermarket {
         customer.PushToBasket(product);
     }*/
     public void CustomerToCashDesk(Integer customerIndex) {
-        _report.setBill(_cashDesk.getCustomerBill(getCustomer(customerIndex)));
-        _customers.set(customerIndex, null);
+        this.report.setBill(this.cashDesk.getCustomerBill(getCustomer(customerIndex)));
+        this.customers.set(customerIndex, null);
     }
 }

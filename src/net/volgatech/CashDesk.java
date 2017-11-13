@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CashDesk {
-    BigDecimal _cashMachineAmount = new BigDecimal(0);
-    private List<Discount> _discounts = new ArrayList<Discount>();
-    private List<Product> _products = new ArrayList<Product>();
+    BigDecimal cashMachineAmount = new BigDecimal(0);
+    private List<Discount> discounts = new ArrayList<Discount>();
+    private List<Product> products = new ArrayList<Product>();
     private Double getDiscountCoefficient(Customer customer, Product product) {
         double coefficient = 1;
-        for (Discount element : _discounts) {
+        for (Discount element : this.discounts) {
             if (element.getProductType().equals(product.getType())) {
                 switch (element.getDiscountType()) {
                     case FOR_CARD_PAYMENT:
@@ -43,7 +43,7 @@ public class CashDesk {
     }
 
     public Bill getCustomerBill(Customer customer) {
-        _cashMachineAmount = new BigDecimal(0);
+        this.cashMachineAmount = new BigDecimal(0);
         if (!customer.getBasket().getProducts().isEmpty()) {
             for (Product product : customer.getBasket().getProducts()) {
                 if (product.isAlcoholic() && customer.getType() == Customer.Type.CHILD) {
@@ -56,20 +56,20 @@ public class CashDesk {
                 int productIndex = customer.getBasket().getProducts().indexOf(product);
                 product.setPrice(price.intValue());
                 customer.getBasket().getProducts().set(productIndex, product);
-                _cashMachineAmount = _cashMachineAmount.add((product.getPrice()).multiply(new BigDecimal(product.getCount())));
+                this.cashMachineAmount = this.cashMachineAmount.add((product.getPrice()).multiply(new BigDecimal(product.getCount())));
             }
         }
         else {
-            _cashMachineAmount = new BigDecimal(0);
+            this.cashMachineAmount = new BigDecimal(0);
         }
-        return new Bill(_cashMachineAmount, customer.getPaymentMethod(), customer.getBasket().getProducts());
+        return new Bill(this.cashMachineAmount, customer.getPaymentMethod(), customer.getBasket().getProducts());
     }
 
     public Integer getAmount() {
-        return _cashMachineAmount.intValue() ;
+        return this.cashMachineAmount.intValue() ;
     }
     public void addDiscount(Double value, String productType, Discount.DiscountType discountType) {
         Discount discount = new Discount(value, productType, discountType);
-        _discounts.add(discount);
+        this.discounts.add(discount);
     }
 }

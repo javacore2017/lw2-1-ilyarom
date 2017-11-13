@@ -1,9 +1,9 @@
 package net.volgatech;
 
 public class Discount {
-    private Double _value;
-    private DiscountType _discountType;
-    private String _productType;
+    private Double value;
+    private DiscountType discountType;
+    private String productType;
     public enum DiscountType {
         FOR_CARD_PAYMENT, FOR_CASH_PAYMENT, FOR_RETIRED, ALL;
         public String ToString() {
@@ -27,27 +27,27 @@ public class Discount {
         setDiscountType(discountType);
     }
     public Double getValue() {
-        return _value;
+        return this.value;
     }
     public String getProductType() {
-        return _productType;
+        return this.productType;
     }
     public DiscountType getDiscountType() {
-        return _discountType;
+        return this.discountType;
     }
     public void setValue(Double value) {
         if (value < 1 && value > 0) {
-            _value = value;
+            this.value = value;
             return;
         }
         throw new IllegalArgumentException("Invalid discount value");
     }
     public void setProductType(String productType) {
-        _productType = productType;
+        this.productType = productType;
     }
 
     public void setDiscountType(DiscountType discountType) {
-        _discountType = discountType;
+        this.discountType = discountType;
     }
 
 }

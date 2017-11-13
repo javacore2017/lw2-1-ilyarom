@@ -10,20 +10,20 @@ public class PaymentMethod {
             return super.toString().toLowerCase();
         }
     }
-    private Method _method;
+    private Method method;
     PaymentMethod(String method) {
         setMethod(method);
     }
     public Method getMethod() {
-        return _method;
+        return this.method;
     }
     public void setMethod(String method) {
         switch (method.toLowerCase()) {
             case "card":
-                _method = Method.CARD;
+                this.method = Method.CARD;
                 break;
             case "cash":
-                _method = Method.CASH;
+                this.method = Method.CASH;
                 break;
             default:
                 throw new IllegalArgumentException("Invalid type of payment method value");

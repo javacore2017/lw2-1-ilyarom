@@ -8,21 +8,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Report {
-    private List<Bill> _bills = new ArrayList<Bill>();
-    private BigDecimal _total = new BigDecimal(0);
+    private List<Bill> bills = new ArrayList<Bill>();
+    private BigDecimal total = new BigDecimal(0);
     public void setBill(Bill bill) {
-        _bills.add(bill);
+        this.bills.add(bill);
     }
     public void print() {
         System.out.println("[" + LocalDateTime.now() + "] REPORT:");
-        for (int i = 0; i < _bills.size(); ++i) {
+        for (int i = 0; i < this.bills.size(); ++i) {
             System.out.println("[" + LocalDateTime.now() + "] Bill number " + i + ": ");
-            for (Product product : _bills.get(i).getProductList()) {
+            for (Product product : this.bills.get(i).getProductList()) {
                 System.out.println("[" + LocalDateTime.now() + "] Product: " + product.getType() + " | " + product.getPrice() + " *" + product.getCount() + " | Price: " + (product.getPrice().multiply(new BigDecimal(product.getCount()))).setScale(0, BigDecimal.ROUND_FLOOR).toString());
             }
-            System.out.println("[" + LocalDateTime.now() + "] Summary price: " + _bills.get(i).getAmount());
-            _total = _total.add(_bills.get(i).getAmount());
+            System.out.println("[" + LocalDateTime.now() + "] Summary price: " + this.bills.get(i).getAmount());
+            this.total = this.total.add(this.bills.get(i).getAmount());
         };
-        System.out.println("[" + LocalDateTime.now() + "] The working day is over. Total: " + _total.setScale(0, BigDecimal.ROUND_FLOOR).toString());
+        System.out.println("[" + LocalDateTime.now() + "] The working day is over. Total: " + this.total.setScale(0, BigDecimal.ROUND_FLOOR).toString());
     }
 }
