@@ -36,6 +36,10 @@ public class Customer {
         return this.paymentMethod.getMethod();
     }
 
+    public void setType(Type type) {
+        this.type = type;
+    }
+
     public void setType(String type) {
         switch (type.toLowerCase()) {
             case "child":
@@ -50,10 +54,6 @@ public class Customer {
             default:
                 throw new IllegalArgumentException("Invalid type of customer value");
         }
-    }
-
-    public void setType(Type type) {
-        this.type = type;
     }
 
     public void setPaymentMethod(String method) {
