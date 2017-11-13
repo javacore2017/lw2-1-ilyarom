@@ -2,9 +2,21 @@ package net.volgatech.Customer;
 
 public class PaymentMethod {
     public enum Method {
-        CARD, CASH
+        CARD,
+        CASH;
+
+        @Override
+        public String toString() {
+            return super.toString().toLowerCase();
+        }
     }
     private Method _method;
+    PaymentMethod(String method) {
+        setMethod(method);
+    }
+    public Method getMethod() {
+        return _method;
+    }
     public void setMethod(String method) {
         switch (method.toLowerCase()) {
             case "card":
@@ -16,11 +28,5 @@ public class PaymentMethod {
             default:
                 throw new IllegalArgumentException("Invalid type of payment method value");
         }
-    }
-    public Method getMethod() {
-        return _method;
-    }
-    PaymentMethod(String method) {
-        setMethod(method);
     }
 }

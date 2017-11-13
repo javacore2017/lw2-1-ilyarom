@@ -3,48 +3,18 @@ package net.volgatech.Customer;
 import net.volgatech.Product;
 
 public class Customer {
-    private Basket _basket = new Basket();
-    private PaymentMethod _paymentMethod;
+    private Basket basket = new Basket();
+    private PaymentMethod paymentMethod;
     public enum Type {
-        CHILD, ADULT, RETIRED
-    }
-    private Type _type;
-    public void setType(String type) {
-        switch (type.toLowerCase()) {
-            case "child":
-                _type = Type.CHILD;
-                break;
-            case "adult":
-                _type = Type.ADULT;
-                break;
-            case "retired":
-                _type = Type.RETIRED;
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid type of customer value");
+        CHILD,
+        ADULT,
+        RETIRED;
+        @Override
+        public String toString() {
+            return super.toString().toLowerCase();
         }
     }
-
-    public void setType(Type type) {
-        _type = type;
-    }
-
-    public Basket getBasket() {
-        return _basket;
-    }
-
-    public Type getType() {
-        return _type;
-    }
-
-    public void setPaymentMethod(String method) {
-        _paymentMethod = new PaymentMethod(method);
-    }
-
-    public PaymentMethod.Method getPaymentMethod() {
-        return _paymentMethod.getMethod();
-    }
-
+    private Type type;
     public Customer(String type, String method) {
         setType(type);
         setPaymentMethod(method);
@@ -54,17 +24,51 @@ public class Customer {
         setType(type);
         setPaymentMethod(method);
     }
+    public Basket getBasket() {
+        return this.basket;
+    }
 
+    public Type getType() {
+        return this.type;
+    }
+
+    public PaymentMethod.Method getPaymentMethod() {
+        return this.paymentMethod.getMethod();
+    }
+
+    public void setType(String type) {
+        switch (type.toLowerCase()) {
+            case "child":
+                this.type = Type.CHILD;
+                break;
+            case "adult":
+                this.type = Type.ADULT;
+                break;
+            case "retired":
+                this.type = Type.RETIRED;
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid type of customer value");
+        }
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public void setPaymentMethod(String method) {
+        this.paymentMethod = new PaymentMethod(method);
+    }
 
     public void PushToBasket(Product product) {
-        for (Product element : _basket.getProducts()) {
+        for (Product element : this.basket.getProducts()) {
             if (element.getType().equals(product.getType())) {
                 element.setCount(element.getCount() + product.getCount());
                 return;
             }
         }
         try {
-            _basket.Add(product.clone());
+            this.basket.Add(product.clone());
         }
         catch(CloneNotSupportedException ex){
 

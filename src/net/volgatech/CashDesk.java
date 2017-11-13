@@ -4,19 +4,16 @@ import net.volgatech.Customer.Customer;
 import net.volgatech.Customer.PaymentMethod;
 import net.volgatech.Report.Report;
 import net.volgatech.Report.Bill;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CashDesk {
-    Double _cashMachineAmount;
+    BigDecimal _cashMachineAmount = new BigDecimal(0);
     private List<Discount> _discounts = new ArrayList<Discount>();
     private List<Product> _products = new ArrayList<Product>();
-    public void addDiscount(Double value, String productType, Discount.DiscountType discountType) {
-        Discount discount = new Discount(value, productType, discountType);
-        _discounts.add(discount);
-    }
-
     private Double getDiscountCoefficient(Customer customer, Product product) {
         double coefficient = 1;
         for (Discount element : _discounts) {
@@ -46,7 +43,7 @@ public class CashDesk {
     }
 
     public Bill getCustomerBill(Customer customer) {
-        _cashMachineAmount = 0.0;
+        _cashMachineAmount = new BigDecimal(0);
         if (!customer.getBasket().getProducts().isEmpty()) {
             for (Product product : customer.getBasket().getProducts()) {
                 if (product.isAlcoholic() && customer.getType() == Customer.Type.CHILD) {
@@ -55,20 +52,24 @@ public class CashDesk {
                 }
                 Double discountCoefficient = getDiscountCoefficient(customer, product);
                 Double price = product.getPrice().doubleValue() * discountCoefficient;
-               // System.out.println("[" + LocalDateTime.now() + "] price:" + price);
+                // System.out.println("[" + LocalDateTime.now() + "] price:" + price);
                 int productIndex = customer.getBasket().getProducts().indexOf(product);
                 product.setPrice(price.intValue());
                 customer.getBasket().getProducts().set(productIndex, product);
-                _cashMachineAmount += product.getCount() * (product.getPrice());
+                _cashMachineAmount = _cashMachineAmount.add((product.getPrice()).multiply(new BigDecimal(product.getCount())));
             }
         }
         else {
-            _cashMachineAmount = 0.0;
+            _cashMachineAmount = new BigDecimal(0);
         }
-        return new Bill(_cashMachineAmount.intValue(), customer.getPaymentMethod(), customer.getBasket().getProducts());
+        return new Bill(_cashMachineAmount, customer.getPaymentMethod(), customer.getBasket().getProducts());
     }
 
     public Integer getAmount() {
         return _cashMachineAmount.intValue() ;
+    }
+    public void addDiscount(Double value, String productType, Discount.DiscountType discountType) {
+        Discount discount = new Discount(value, productType, discountType);
+        _discounts.add(discount);
     }
 }
