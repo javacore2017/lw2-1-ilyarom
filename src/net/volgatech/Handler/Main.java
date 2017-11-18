@@ -91,6 +91,5 @@ public class Main {
         }
         System.out.println("[" + LocalDateTime.now() + "] Supermarket is closed");
         supermarket.getReport().print();
-        return;
     }
 }

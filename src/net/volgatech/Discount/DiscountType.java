@@ -1,9 +1,7 @@
 package net.volgatech.Discount;
 
-public enum DiscountType {
-    FOR_CARD_PAYMENT, FOR_CASH_PAYMENT, FOR_RETIRED, ALL;
-    @Override
-    public String toString() {
-        return super.toString().toLowerCase();
-    }
+import net.volgatech.Customer.Customer;
+
+public abstract class DiscountType {
+    public abstract double getDiscountCoefficient(Customer customer, double value);
 }

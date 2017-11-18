@@ -20,25 +20,7 @@ public class CashDesk {
         double coefficient = 1;
         for (Discount element : this.discounts) {
             if (element.getProductType().equals(product.getType())) {
-                switch (element.getDiscountType()) {
-                    case FOR_CARD_PAYMENT:
-                        if (customer.getPaymentMethod() == MethodType.CARD)
-                            coefficient *= (1 - element.getValue());
-                        break;
-                    case FOR_CASH_PAYMENT:
-                        if (customer.getPaymentMethod() == MethodType.CASH)
-                            coefficient *= (1 - element.getValue());
-                        break;
-                    case FOR_RETIRED:
-                        if (customer.getType() == CustomerType.RETIRED)
-                            coefficient *= (1 - element.getValue());
-                        break;
-                    case ALL:
-                        coefficient *= (1 - element.getValue());
-                        break;
-                    default:
-                        throw new IllegalArgumentException("Invalid type of discount");
-                }
+                coefficient *= element.getDiscountType().getDiscountCoefficient(customer, element.getValue());
             }
         }
         return coefficient;

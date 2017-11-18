@@ -28,7 +28,6 @@ public class Discount {
     public void setProductType(String productType) {
         this.productType = productType;
     }
-
     public void setDiscountType(DiscountType discountType) {
         this.discountType = discountType;
     }

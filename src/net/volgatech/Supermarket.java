@@ -58,13 +58,13 @@ public class Supermarket {
     public void addCustomer(String type, String paymentMethod) {
         Customer customer = new Customer(type, paymentMethod);
         this.customers.add(customer);
-        System.out.println("[" + LocalDateTime.now() + "] New customer â€˜customer" + this.customers.indexOf(customer) + "â€™ arrived");
+        System.out.println("[" + LocalDateTime.now() + "] New customer ‘customer" + this.customers.indexOf(customer) + "’ arrived");
     }
 
     public void addCustomer(CustomerType type, String paymentMethod) {
         Customer customer = new Customer(type, paymentMethod);
         this.customers.add(customer);
-        System.out.println("[" + LocalDateTime.now() + "] New customer â€˜customer" + this.customers.indexOf(customer) + "â€™ arrived");
+        System.out.println("[" + LocalDateTime.now() + "] New customer ‘customer" + this.customers.indexOf(customer) + "’ arrived");
     }
 
     public void changeProductCount(int value, int index) {
