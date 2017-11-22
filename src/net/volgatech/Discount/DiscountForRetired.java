@@ -2,8 +2,6 @@ package net.volgatech.Discount;
 
 import net.volgatech.Customer.Customer;
 import net.volgatech.Customer.CustomerType;
-import net.volgatech.Customer.PaymentMethod.MethodType;
-import net.volgatech.Customer.PaymentMethod.PaymentMethod;
 
 public class DiscountForRetired extends DiscountType {
     public double getDiscountCoefficient(Customer customer, double value) {

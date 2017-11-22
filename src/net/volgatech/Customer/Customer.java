@@ -5,7 +5,7 @@ import net.volgatech.Customer.PaymentMethod.PaymentMethod;
 import net.volgatech.Product;
 
 public class Customer {
-    private Basket basket = new Basket();
+    private final Basket basket = new Basket();
     private PaymentMethod paymentMethod;
     private CustomerType type;
     public Customer(String type, String method) {
@@ -13,10 +13,6 @@ public class Customer {
         setPaymentMethod(method);
     }
 
-    public Customer(CustomerType type, String method) {
-        setType(type);
-        setPaymentMethod(method);
-    }
     public Basket getBasket() {
         return this.basket;
     }
@@ -29,11 +25,7 @@ public class Customer {
         return this.paymentMethod.getMethod();
     }
 
-    public void setType(CustomerType type) {
-        this.type = type;
-    }
-
-    public void setType(String type) {
+    private void setType(String type) {
         switch (type.toLowerCase()) {
             case "child":
                 this.type = CustomerType.CHILD;
@@ -49,7 +41,7 @@ public class Customer {
         }
     }
 
-    public void setPaymentMethod(String method) {
+    private void setPaymentMethod(String method) {
         this.paymentMethod = new PaymentMethod(method);
     }
 

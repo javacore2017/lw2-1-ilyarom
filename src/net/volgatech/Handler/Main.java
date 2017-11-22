@@ -1,7 +1,6 @@
 package net.volgatech.Handler;
 
 import net.volgatech.Customer.Customer;
-import net.volgatech.Discount.Discount;
 import net.volgatech.Discount.DiscountType;
 import net.volgatech.Product;
 import net.volgatech.Supermarket;
@@ -9,7 +8,7 @@ import net.volgatech.Supermarket;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class Main {
+class Main {
 
     private static Boolean isCustomersBuyUp(Supermarket supermarket) {
         for (int i = 0; i < supermarket.getCustomersCount(); ++i) {
@@ -37,7 +36,6 @@ public class Main {
             supermarket.addProduct(element, units, price, isAlcoholic);
         }
         System.out.println("[" + LocalDateTime.now() + "] Supermarket is opened");
-        Timer timer = new Timer();
 
         supermarket.addCustomer(values.customerTypes.get(random.nextInt(2)), values.paymentMethods.get(random.nextInt(1)));
         for (int i = 0; i < 5; ++i)
@@ -68,7 +66,7 @@ public class Main {
                     product.setCount(unitsToPush);
                 }
                 else {
-                    System.out.println("[" + LocalDateTime.now() + "] Too much units taked customer#" + customerIndex + " of " + product.getType());
+                    System.out.println("[" + LocalDateTime.now() + "] Too much units takes customer#" + customerIndex + " of " + product.getType());
                     continue;
                 }
                 customer.PushToBasket(product);

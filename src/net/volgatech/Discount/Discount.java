@@ -18,17 +18,17 @@ public class Discount {
     public DiscountType getDiscountType() {
         return this.discountType;
     }
-    public void setValue(Double value) {
+    private void setValue(Double value) {
         if (value < 1 && value > 0) {
             this.value = value;
             return;
         }
         throw new IllegalArgumentException("Invalid discount value");
     }
-    public void setProductType(String productType) {
+    private void setProductType(String productType) {
         this.productType = productType;
     }
-    public void setDiscountType(DiscountType discountType) {
+    private void setDiscountType(DiscountType discountType) {
         this.discountType = discountType;
     }
 

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Report {
-    private List<Bill> bills = new ArrayList<Bill>();
+    private final List<Bill> bills = new ArrayList<>();
     private BigDecimal total = new BigDecimal(0);
     public void setBill(Bill bill) {
         this.bills.add(bill);
@@ -22,7 +22,7 @@ public class Report {
             }
             System.out.println("[" + LocalDateTime.now() + "] Summary price: " + this.bills.get(i).getAmount());
             this.total = this.total.add(this.bills.get(i).getAmount());
-        };
+        }
         System.out.println("[" + LocalDateTime.now() + "] The working day is over. Total: " + this.total.setScale(0, BigDecimal.ROUND_FLOOR).toString());
     }
 }

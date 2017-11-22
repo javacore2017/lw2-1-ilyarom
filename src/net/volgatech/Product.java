@@ -7,23 +7,7 @@ public class Product implements Cloneable {
     private Integer count;
     private BigDecimal price = new BigDecimal(0);
     private Boolean isAlcoholic = false;
-    Product(String type, Integer count, Integer price) {
-        setType(type);
-        setCount(count);
-        setPrice(price);
-    }
-    Product(String type, Integer count, BigDecimal price) {
-        setType(type);
-        setCount(count);
-        setPrice(price);
-    }
     Product(String type, Integer count, Integer price, Boolean isAlcoholic) {
-        setType(type);
-        setCount(count);
-        setPrice(price);
-        this.isAlcoholic = isAlcoholic;
-    }
-    Product(String type, Integer count, BigDecimal price, Boolean isAlcoholic) {
         setType(type);
         setCount(count);
         setPrice(price);
@@ -38,7 +22,7 @@ public class Product implements Cloneable {
     public String getType() {
         return this.type;
     }
-    public void setType(String type) {
+    private void setType(String type) {
         if (type.isEmpty()) throw new IllegalArgumentException("Invalid type value");
         this.type = type;
     }
@@ -46,16 +30,15 @@ public class Product implements Cloneable {
         if (count < 0) throw new IllegalArgumentException("Invalid count value");
         this.count = count;
     }
-    public void setPrice(Integer price) {
+    void setPrice(Integer price) {
         if (price <= 0) throw new IllegalArgumentException("Invalid price value");
         this.price = new BigDecimal(price);
     }
-    public void setPrice(BigDecimal price) { this.price = price;
-    }
+
     public Product clone() throws CloneNotSupportedException{
         return (Product) super.clone();
     }
-    public Boolean isAlcoholic() {
+    Boolean isAlcoholic() {
         return this.isAlcoholic;
     }
 }

@@ -2,7 +2,6 @@ package net.volgatech;
 
 import net.volgatech.Customer.Customer;
 import net.volgatech.Customer.CustomerType;
-import net.volgatech.Customer.PaymentMethod.MethodType;
 import net.volgatech.Discount.Discount;
 import net.volgatech.Discount.DiscountType;
 import net.volgatech.Report.Bill;
@@ -13,9 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CashDesk {
-    BigDecimal cashMachineAmount = new BigDecimal(0);
-    private List<Discount> discounts = new ArrayList<Discount>();
-    private List<Product> products = new ArrayList<Product>();
+    private BigDecimal cashMachineAmount = new BigDecimal(0);
+    private final List<Discount> discounts = new ArrayList<>();
     private Double getDiscountCoefficient(Customer customer, Product product) {
         double coefficient = 1;
         for (Discount element : this.discounts) {
@@ -31,7 +29,7 @@ public class CashDesk {
         if (!customer.getBasket().getProducts().isEmpty()) {
             for (Product product : customer.getBasket().getProducts()) {
                 if (product.isAlcoholic() && customer.getType() == CustomerType.CHILD) {
-                    System.out.println("[" + LocalDateTime.now() + "] Try to buy alcholic product by child!");
+                    System.out.println("[" + LocalDateTime.now() + "] Try to buy alcoholic product by child!");
                     break;
                 }
                 Double discountCoefficient = getDiscountCoefficient(customer, product);
@@ -46,7 +44,7 @@ public class CashDesk {
         else {
             this.cashMachineAmount = new BigDecimal(0);
         }
-        return new Bill(this.cashMachineAmount, customer.getPaymentMethod(), customer.getBasket().getProducts());
+        return new Bill(this.cashMachineAmount, customer.getBasket().getProducts());
     }
 
     public Integer getAmount() {

@@ -8,7 +8,7 @@ public class PaymentMethod {
     public MethodType getMethod() {
         return this.method;
     }
-    public void setMethod(String method) {
+    private void setMethod(String method) {
         switch (method.toLowerCase()) {
             case "card":
                 this.method = MethodType.CARD;
